@@ -52,3 +52,57 @@ var twoSum = function (numbers, target) {
   }
   return [left + 1, right + 1];
 };
+
+
+const nums = [-5, -2, 3, 4, 6];
+const target = 7;
+
+function pair_sum_sorted_brute_force(nums, target) {
+  for(let i=0; i<nums.length; i++) {
+    for(let j =i+1; j<nums.length; j++) {
+      if(nums[i] + nums[j] === target) {
+        return [i, j];
+      }
+    }
+  }
+
+  return [];
+}
+
+
+// Meth2:
+// This approach works only if the input array is sorted in ascending order.
+function pair_sum_sorted_ascending(nums, target) {
+  const n = nums.length;
+  let left = 0;
+  let right = n-1;
+
+  while(left < right) {
+    const sum = nums[left] + nums[right];
+
+    if(sum === target) {
+      return [left, right];
+    } else if(sum < target) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  return [];
+}
+
+// Meth3: Most Optimised O(n) - TC - This approach works for both ascending and descending sorted arrays.
+function pair_sorted(nums, target) {
+    let numsMap = new Map();
+    for(let i=0; i< nums.length; i++) {
+        let comp = target - nums[i]
+        if(numsMap.has(comp)) {
+            return [i, numsMap.get(comp)]
+        }
+        numsMap.set(nums[i], i);
+    }
+    return [];
+}
+
+console.log('pair_sorted', pair_sorted([-1,-2,-3,-4,-5], -8))
