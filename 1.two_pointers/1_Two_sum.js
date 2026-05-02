@@ -57,6 +57,7 @@ var twoSum = function (numbers, target) {
 const nums = [-5, -2, 3, 4, 6];
 const target = 7;
 
+// Meth1: Brute Force O(n^2) - TC, SC - O(1)
 function pair_sum_sorted_brute_force(nums, target) {
   for(let i=0; i<nums.length; i++) {
     for(let j =i+1; j<nums.length; j++) {
@@ -72,6 +73,7 @@ function pair_sum_sorted_brute_force(nums, target) {
 
 // Meth2:
 // This approach works only if the input array is sorted in ascending order.
+// TC - O(n), SC - O(1)
 function pair_sum_sorted_ascending(nums, target) {
   const n = nums.length;
   let left = 0;
@@ -93,6 +95,7 @@ function pair_sum_sorted_ascending(nums, target) {
 }
 
 // Meth3: Most Optimised O(n) - TC - This approach works for both ascending and descending sorted arrays.
+// TC - O(n), SC - O(n)
 function pair_sorted(nums, target) {
     let numsMap = new Map();
     for(let i=0; i< nums.length; i++) {
